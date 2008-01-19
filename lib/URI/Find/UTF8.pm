@@ -2,7 +2,7 @@ package URI::Find::UTF8;
 
 use strict;
 use 5.8.1;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use base qw( URI::Find );
 use URI::Escape;
@@ -33,6 +33,8 @@ sub _is_uri {
 
 1;
 __END__
+
+=encoding utf-8
 
 =for stopwords URI UTF8 UTF-8 UTF IM IRC URL URLs unencoded
 
