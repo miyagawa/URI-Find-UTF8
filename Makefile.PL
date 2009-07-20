@@ -3,7 +3,7 @@ name 'URI-Find-UTF8';
 all_from 'lib/URI/Find/UTF8.pm';
 
 requires 'Encode';
-requires 'URI::Find', 0.16;
+requires 'URI::Find', 20090319;
 requires 'URI::Escape';
 
 build_requires 'Test::More';

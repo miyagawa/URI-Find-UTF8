@@ -1,5 +1,8 @@
 Revision history for Perl extension URI::Find::UTF8
 
+0.03  Sun Jul 19 23:19:00 PDT 2009
+        - Fixed tests with recent URI::Find
+
 0.02  Fri Jan 18 16:27:07 PST 2008
         - Added =encoding utf-8 to docs
         - Specify URI::Find version number to make sure it's not ancient
