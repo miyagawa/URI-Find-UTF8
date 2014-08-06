@@ -1,5 +1,8 @@
 Revision history for Perl extension URI::Find::UTF8
 
+{{$NEXT}}
+        - Make it work with newer upstream URI::Find (ediblenergy)
+
 0.03  Sun Jul 19 23:19:00 PDT 2009
         - Fixed tests with recent URI::Find
 
