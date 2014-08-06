@@ -113,7 +113,7 @@ BEGIN {
           'Hmmm, Storyserver from news.com.  http://news.cnet.com/news/0-1004-200-1537811.html?tag=st.ne.1002.thed.1004-200-1537811  How nice.'
              => [[S => 'http://news.com'],
 	     	 [$all => 'http://news.cnet.com/news/0-1004-200-1537811.html?tag=st.ne.1002.thed.1004-200-1537811']],
-          '$html = get("http://www.perl.com");' => 'http://www.perl.com',
+          '$html = get("http://www.perl.com/");' => 'http://www.perl.com/',
           q|my $url = url('http://www.perl.com/cgi-bin/cpan_mod');|
               => 'http://www.perl.com/cgi-bin/cpan_mod',
           'http://www.perl.org/support/online_support.html#mail'
