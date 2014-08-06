@@ -17,6 +17,7 @@ END {print "not ok $test_num\n" unless $loaded;}
 print "1..$Total_tests\n";
 use URI::Find::UTF8;
 use URI::Find::Schemeless ();
+use URI::URL;
 $loaded = 1;
 BEGIN { $Total_tests++ }
 ok(1, 'compile');
@@ -94,23 +95,23 @@ BEGIN {
     # ARGH!  URI::URL is inconsistant in how it normalizes URLs!
     # HTTP URLs get a trailing slash, FTP and gopher do not.
     %Tests = (
-          '<URL:http://www.perl.com>' => 'http://www.perl.com/',
+          '<URL:http://www.perl.com>' => 'http://www.perl.com',
           '<ftp://ftp.site.org>'      => 'ftp://ftp.site.org',
           '<ftp.site.org>'            => [[ S => 'ftp://ftp.site.org' ]],
           'Make sure "http://www.foo.com" is caught' =>
-                'http://www.foo.com/',
-          'http://www.foo.com'  => 'http://www.foo.com/',
-          'www.foo.com'         => [[ S => 'http://www.foo.com/' ]],
+                'http://www.foo.com',
+          'http://www.foo.com'  => 'http://www.foo.com',
+          'www.foo.com'         => [[ S => 'http://www.foo.com' ]],
           'ftp.foo.com'         => [[ S => 'ftp://ftp.foo.com' ]],
           'gopher://moo.foo.com'        => 'gopher://moo.foo.com',
           'I saw this site, http://www.foo.com, and its really neat!'
-              => 'http://www.foo.com/',
+              => 'http://www.foo.com',
           'Foo Industries (at http://www.foo.com)'
-              => 'http://www.foo.com/',
+              => 'http://www.foo.com',
           'Oh, dear.  Another message from Dejanews.  http://www.deja.com/%5BST_rn=ps%5D/qs.xp?ST=PS&svcclass=dnyr&QRY=lwall&defaultOp=AND&DBS=1&OP=dnquery.xp&LNG=ALL&subjects=&groups=&authors=&fromdate=&todate=&showsort=score&maxhits=25  How fun.'
               => 'http://www.deja.com/%5BST_rn=ps%5D/qs.xp?ST=PS&svcclass=dnyr&QRY=lwall&defaultOp=AND&DBS=1&OP=dnquery.xp&LNG=ALL&subjects=&groups=&authors=&fromdate=&todate=&showsort=score&maxhits=25',
           'Hmmm, Storyserver from news.com.  http://news.cnet.com/news/0-1004-200-1537811.html?tag=st.ne.1002.thed.1004-200-1537811  How nice.'
-             => [[S => 'http://news.com/'],
+             => [[S => 'http://news.com'],
 	     	 [$all => 'http://news.cnet.com/news/0-1004-200-1537811.html?tag=st.ne.1002.thed.1004-200-1537811']],
           '$html = get("http://www.perl.com/");' => 'http://www.perl.com/',
           q|my $url = url('http://www.perl.com/cgi-bin/cpan_mod');|
@@ -118,32 +119,30 @@ BEGIN {
           'http://www.perl.org/support/online_support.html#mail'
               => 'http://www.perl.org/support/online_support.html#mail',
     	  'irc.lightning.net irc.mcs.net'
-	      => [[S => 'http://irc.lightning.net/'],
-		  [S => 'http://irc.mcs.net/']],
-    	  'foo.bar.xx/~baz/',
-	      => [[S => 'http://foo.bar.xx/~baz/']],
+	      => [[S => 'http://irc.lightning.net'],
+		  [S => 'http://irc.mcs.net']],
     	  'foo.bar.xx/~baz/ abcd.efgh.mil, none.such/asdf/ hi.there.org'
-	      => [[S => 'http://foo.bar.xx/~baz/'],
-		  [S => 'http://abcd.efgh.mil/'],
-		  [S => 'http://hi.there.org/']],
+	      => [
+		  [S => 'http://abcd.efgh.mil'],
+		  [S => 'http://hi.there.org']],
 	  'foo:<1.2.3.4>'
-	      => [[S => 'http://1.2.3.4/']],
+	      => [[S => 'http://1.2.3.4']],
 	  'mail.eserv.com.au?  failed before ? designated end'
-	      => [[S => 'http://mail.eserv.com.au/']],
+	      => [[S => 'http://mail.eserv.com.au']],
 	  'foo.info/himom ftp.bar.biz'
 	      => [[S => 'http://foo.info/himom'],
 		  [S => 'ftp://ftp.bar.biz']],
-	  '(http://round.com)'   => 'http://round.com/',
-	  '[http://square.com]'  => 'http://square.com/',
-	  '{http://brace.com}'   => 'http://brace.com/',
-	  '<http://angle.com>'   => 'http://angle.com/',
-	  '(round.com)'          => [[S => 'http://round.com/'  ]],
-	  '[square.com]'         => [[S => 'http://square.com/' ]],
-	  '{brace.com}'          => [[S => 'http://brace.com/'  ]],
-	  '<angle.com>'          => [[S => 'http://angle.com/'  ]],
-	  '<x>intag.com</x>'     => [[S => 'http://intag.com/'  ]],
+	  '(http://round.com)'   => 'http://round.com',
+	  '[http://square.com]'  => 'http://square.com',
+	  '{http://brace.com}'   => 'http://brace.com',
+	  '<http://angle.com>'   => 'http://angle.com',
+	  '(round.com)'          => [[S => 'http://round.com'  ]],
+	  '[square.com]'         => [[S => 'http://square.com' ]],
+	  '{brace.com}'          => [[S => 'http://brace.com'  ]],
+	  '<angle.com>'          => [[S => 'http://angle.com'  ]],
+	  '<x>intag.com</x>'     => [[S => 'http://intag.com'  ]],
 	  '[mailto:somebody@company.ext]' => 'mailto:somebody@company.ext',
-	  'HTtp://MIXED-Case.Com' => 'http://mixed-case.com/',
+	  'HTtp://MIXED-Case.Com' => 'HTtp://MIXED-Case.Com',
 
 	  # False tests
 	  'HTTP::Request::Common'			=> [],
