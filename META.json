@@ -60,7 +60,7 @@
          "web" : "https://github.com/miyagawa/URI-Find-UTF8"
       }
    },
-   "version" : "0.03",
+   "version" : "0.04",
    "x_contributors" : [
       "otsune <otsune@gmail.com>",
       "skaufman <sam@socialflow.com>"
