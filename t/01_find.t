@@ -37,4 +37,4 @@ Home page <URL:http://www.google.com> Google
 --- raw
 http://www.google.com
 --- uri
-http://www.google.com/
+http://www.google.com
