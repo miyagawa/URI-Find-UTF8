@@ -2,7 +2,7 @@ package URI::Find::UTF8;
 
 use strict;
 use 5.8.1;
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use base qw( URI::Find );
 use URI::Escape;

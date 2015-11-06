@@ -47,7 +47,7 @@ Note that this module doesn't (yet) handle International Domain Names.
 
 # AUTHOR
 
-Tatsuhiko Miyagawa <miyagawa@bulknews.net>
+Tatsuhiko Miyagawa &lt;miyagawa@bulknews.net>
 
 # LICENSE
 

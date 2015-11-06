@@ -4,47 +4,48 @@
       "Tatsuhiko Miyagawa <miyagawa@bulknews.net>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Milla version v1.0.5, Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.142060",
+   "generated_by" : "Dist::Zilla version 5.041, Dist::Milla version v1.0.15, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
-      "version" : "2"
+      "version" : 2
    },
    "name" : "URI-Find-UTF8",
    "no_index" : {
       "directory" : [
-         "t",
-         "xt",
+         "eg",
+         "examples",
          "inc",
          "share",
-         "eg",
-         "examples"
+         "t",
+         "xt"
       ]
    },
    "prereqs" : {
-      "build" : {
-         "requires" : {
-            "ExtUtils::MakeMaker" : "0"
-         }
-      },
       "configure" : {
          "requires" : {
-            "Module::Build::Tiny" : "0.037"
+            "Module::Build::Tiny" : "0.034"
          }
       },
       "develop" : {
          "requires" : {
+            "Dist::Milla" : "v1.0.15",
             "Test::Pod" : "1.41"
          }
       },
       "runtime" : {
          "requires" : {
             "Encode" : "0",
-            "Test::More" : "0",
             "URI::Escape" : "0",
             "URI::Find" : "20140709"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::Base" : "0",
+            "Test::More" : "0"
          }
       }
    },
@@ -60,9 +61,8 @@
          "web" : "https://github.com/miyagawa/URI-Find-UTF8"
       }
    },
-   "version" : "0.04",
+   "version" : "0.05",
    "x_contributors" : [
-      "otsune <otsune@gmail.com>",
       "skaufman <sam@socialflow.com>"
    ]
 }
