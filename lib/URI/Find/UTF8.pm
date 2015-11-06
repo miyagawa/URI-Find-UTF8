@@ -96,6 +96,6 @@ it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-I<URI::Find>
+L<URI::Find>
 
 =cut
